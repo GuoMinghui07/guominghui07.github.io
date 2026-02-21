@@ -168,20 +168,55 @@
       .join("");
   }
 
+  function renderAwards(items) {
+    const root = document.getElementById("awardList");
+    if (!root) return;
+    if (!items.length) {
+      root.innerHTML = '<p class="empty-message">No award entries yet.</p>';
+      return;
+    }
+
+    root.innerHTML = items
+      .map((item) => {
+        const rawTitle = item.title || "";
+        const titleParts = rawTitle.split("|").map((part) => part.trim()).filter(Boolean);
+        const competition = item.competition || titleParts[0] || "Untitled Award";
+        const prize = item.prize || (titleParts.length > 1 ? titleParts.slice(1).join(" ") : "");
+
+        return (
+          '<article class="award-item">' +
+          '<div class="award-main">' +
+          '<p class="award-title">' + escapeHtml(competition) + "</p>" +
+          (prize ? '<p class="award-prize">' + escapeHtml(prize) + "</p>" : "") +
+          "</div>" +
+          '<p class="award-time">' + escapeHtml(item.time || "") + "</p>" +
+          "</article>"
+        );
+      })
+      .join("");
+  }
+
   window.addEventListener("DOMContentLoaded", async () => {
     document.body.classList.add("loaded");
     const y = document.getElementById("year");
     if (y) y.textContent = String(new Date().getFullYear());
 
     try {
-      const [pubs, interns] = await Promise.all([loadYamlItems("publication"), loadYamlItems("internship")]);
+      const [pubs, interns, awards] = await Promise.all([
+        loadYamlItems("publication"),
+        loadYamlItems("internship"),
+        loadYamlItems("awards")
+      ]);
       renderPublications(pubs);
       renderInternships(interns);
+      renderAwards(awards);
     } catch (err) {
       const pubRoot = document.getElementById("publicationList");
       const internRoot = document.getElementById("internshipList");
+      const awardRoot = document.getElementById("awardList");
       if (pubRoot) pubRoot.innerHTML = '<p class="empty-message">Failed to load publication YAML.</p>';
       if (internRoot) internRoot.innerHTML = '<p class="empty-message">Failed to load internship YAML.</p>';
+      if (awardRoot) awardRoot.innerHTML = '<p class="empty-message">Failed to load awards YAML.</p>';
       console.error(err);
     }
   });

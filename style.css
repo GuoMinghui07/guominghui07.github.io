@@ -130,6 +130,15 @@ h1{
 }
 .links a{
   position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.link-icon{
+  width:16px;
+  height:16px;
+  flex:none;
+  fill:currentColor;
 }
 .links a:not(:last-child)::after{
   content:"/";
@@ -313,6 +322,42 @@ li{margin:8px 0}
   color:var(--muted);
   font-size:14px;
 }
+.award-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:12px;
+}
+.award-item{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:14px;
+  align-items:start;
+}
+.award-main{
+  min-width:0;
+}
+.award-title{
+  margin:0;
+  font-size:17px;
+  line-height:1.35;
+  color:var(--text);
+}
+.award-prize{
+  margin:2px 0 0;
+  font-size:15px;
+  line-height:1.35;
+  color:#4a5668;
+  font-family:"Times New Roman", Georgia, serif;
+  font-style:italic;
+}
+.award-time{
+  margin:0;
+  font-size:17px;
+  line-height:1.35;
+  color:var(--text);
+  white-space:nowrap;
+}
 .empty-message{
   margin:0;
   color:var(--muted);
@@ -321,6 +366,9 @@ li{margin:8px 0}
 @media (max-width:760px){
   .intern-item{grid-template-columns:52px 1fr}
   .intern-logo{width:52px; height:52px; border-radius:10px}
+  .award-item{grid-template-columns:1fr}
+  .award-prize{font-size:14px}
+  .award-time{font-size:15px; color:var(--muted)}
 }
 .note{color:var(--muted); font-size:13px; margin-top:10px}
 footer{

@@ -6,3 +6,4 @@ authors:
 description: A data-driven framework for discovering variable-coefficient governing equations and reconstructing system dynamics with robust performance under noisy observations.
 cover: assets/res-kan.png
 paper: https://www-sciencedirect-com.libproxy1.nus.edu.sg/science/article/pii/S0167278925001666
+code: https://github.com/GuoMinghui07/reskan-master
