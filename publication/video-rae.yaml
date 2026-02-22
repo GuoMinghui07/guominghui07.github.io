@@ -3,7 +3,7 @@ venue: ECCV
 year: 2026
 status: planned
 authors:
-  - Minghui Guo, Hao Fei*, Shengqiong Wu
+  - Minghui Guo, Shengqiong Wu, Hao Fei*
 description: A unified representation autoencoder design for temporally consistent video understanding and generation, bridging semantic feature spaces and generative decoding.
 # code: "#"
 # paper: "#"
