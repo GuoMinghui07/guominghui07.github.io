@@ -1,7 +1,7 @@
 title: Video-RAE: Unified Video Understanding and Generation from Pretrained Semantic Representations
-venue: ECCV
+venue: Preprint
 year: 2026
-status: planned
+# status: 
 authors:
   - Minghui Guo, Shengqiong Wu, Hao Fei*
 description: A unified representation autoencoder design for temporally consistent video understanding and generation, bridging semantic feature spaces and generative decoding.
