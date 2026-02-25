@@ -2,7 +2,7 @@ title: Extraction and Reconstruction of Variable-Coefficient Governing Equations
 venue: Physica D: Nonlinear Phenomena
 year: 2025
 authors:
-  - Minghui Guo, Xing Lü, Yuxi Jin
+  - Minghui Guo, Xing Lü*, Yuxi Jin
 description: A data-driven framework for discovering variable-coefficient governing equations and reconstructing system dynamics with robust performance under noisy observations.
 cover: assets/res-kan.png
 paper: https://www.sciencedirect.com/science/article/abs/pii/S0167278925001666
