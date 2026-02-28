@@ -3,7 +3,7 @@ venue: Preprint
 year: 2026
 # status: 
 authors:
-  - Minghui Guo, Shengqiong Wu, Hao Fei*
+  - Minghui Guo, Shengqiong Wu, Shuicheng Yan, Philip Torr, Hao Fei*.
 description: A unified representation autoencoder design for temporally consistent video understanding and generation, bridging semantic feature spaces and generative decoding.
 # code: "#"
 # paper: "#"
