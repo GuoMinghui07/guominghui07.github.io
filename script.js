@@ -96,9 +96,10 @@
 
   function renderPublicationLinks(item) {
     const links = [];
-    if (item.code) links.push('<a href="' + escapeHtml(item.code) + '" target="_blank" rel="noreferrer">code</a>');
+    if (item.models) links.push('<a href="' + escapeHtml(item.models) + '" target="_blank" rel="noreferrer">models</a>');
     if (item.website) links.push('<a href="' + escapeHtml(item.website) + '" target="_blank" rel="noreferrer">website</a>');
-    if (item.paper) links.push('<a href="' + escapeHtml(item.paper) + '" target="_blank" rel="noreferrer">paper</a>');
+    if (item.homepage) links.push('<a href="' + escapeHtml(item.homepage) + '" target="_blank" rel="noreferrer">homepage</a>');
+    if (item.code) links.push('<a href="' + escapeHtml(item.code) + '" target="_blank" rel="noreferrer">code</a>');
     if (!links.length) return "";
     return '<p class="pub-links">' + links.join('<span>/</span>') + "</p>";
   }
@@ -117,16 +118,22 @@
         const year = item.year ? " (" + escapeHtml(item.year) + ")" : "";
         const status = item.status ? " " + escapeHtml(item.status) : "";
         const authors = Array.isArray(item.authors) ? item.authors.map(formatAuthor).join(", ") : "";
-        const cover = item.cover
+        const coverImage = item.cover
           ? '<img src="' + escapeHtml(item.cover) + '" alt="' + escapeHtml(item.title || "Publication cover") + '" />'
           : "Coming soon";
+        const cover = item.cover && item.paper
+          ? '<a href="' + escapeHtml(item.paper) + '" target="_blank" rel="noreferrer" aria-label="Open paper: ' + escapeHtml(item.title) + '">' + coverImage + "</a>"
+          : coverImage;
         const coverClass = item.cover ? "pub-thumb" : "pub-thumb pub-thumb-empty";
+        const title = item.paper
+          ? '<a href="' + escapeHtml(item.paper) + '" target="_blank" rel="noreferrer">' + escapeHtml(item.title) + "</a>"
+          : escapeHtml(item.title);
 
         return (
           '<article class="pub-item">' +
           '<div class="' + coverClass + '">' + cover + "</div>" +
           '<div class="pub-content">' +
-          "<h3>" + escapeHtml(item.title) + "</h3>" +
+          "<h3>" + title + "</h3>" +
           '<p class="pub-meta">' + venue + year + status + "</p>" +
           (authors ? '<p class="pub-authors">' + authors + "</p>" : "") +
           renderPublicationLinks(item) +
