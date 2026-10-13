@@ -3,8 +3,9 @@ venue: arXiv preprint
 year: 2026
 cover: assets/V-RAE-overall.png
 authors:
-  - Minghui Guo, Shengqiong Wu, Hao Fei
-description: A video representation autoencoder that builds compact generative latents from frozen vision foundation model features for reconstruction, generation, and predictive modeling.
+  - Minghui Guo
+  - Shengqiong Wu
+  - Hao Fei
 homepage: https://v-rae.github.io/
 code: https://github.com/V-RAE/V-RAE
 models: https://huggingface.co/Guomh0707/V-RAE-Models
