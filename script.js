@@ -264,7 +264,9 @@
         const cover = item.cover && item.paper
           ? '<a href="' + escapeHtml(item.paper) + '" target="_blank" rel="noreferrer" aria-label="Open paper: ' + escapeHtml(item.title) + '">' + coverImage + "</a>"
           : coverImage;
-        const coverClass = item.cover ? "pub-thumb" : "pub-thumb pub-thumb-empty";
+        const coverClass = item.cover
+          ? "pub-thumb" + (item.paper ? " pub-thumb-interactive" : "")
+          : "pub-thumb pub-thumb-empty";
         const title = item.paper
           ? '<a href="' + escapeHtml(item.paper) + '" target="_blank" rel="noreferrer">' + escapeHtml(item.title) + "</a>"
           : escapeHtml(item.title);
