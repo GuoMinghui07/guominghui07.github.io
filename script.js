@@ -1,4 +1,30 @@
 (function () {
+  function initializeTheme() {
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    let savedTheme;
+    try { savedTheme = localStorage.getItem("theme"); } catch (_) {}
+
+    function applyTheme(theme) {
+      root.dataset.theme = theme;
+      if (!toggle) return;
+      const dark = theme === "dark";
+      const label = dark ? "Switch to light mode" : "Switch to dark mode";
+      toggle.setAttribute("aria-pressed", String(dark));
+      toggle.title = label;
+    }
+
+    applyTheme(savedTheme === "light" ? "light" : "dark");
+    if (toggle) {
+      toggle.hidden = false;
+      toggle.addEventListener("click", () => {
+        const theme = root.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(theme);
+        try { localStorage.setItem("theme", theme); } catch (_) {}
+      });
+    }
+  }
+
   function parseYamlScalar(raw) {
     const value = (raw || "").trim();
     if (!value) return "";
@@ -268,7 +294,7 @@
     root.innerHTML = items
       .map((item) => {
         const logo = item.logo
-          ? '<img src="' + escapeHtml(item.logo) + '" alt="' + escapeHtml(item.company || "Company logo") + '" />'
+          ? '<img' + (item.logo_monochrome === "true" ? ' class="intern-logo-monochrome"' : '') + ' src="' + escapeHtml(item.logo) + '" alt="' + escapeHtml(item.company || "Company logo") + '" />'
           : '<div class="intern-logo-placeholder">No logo</div>';
 
         const company = item.website
@@ -323,6 +349,7 @@
   }
 
   window.addEventListener("DOMContentLoaded", async () => {
+    initializeTheme();
     document.body.classList.add("loaded");
     const y = document.getElementById("year");
     if (y) y.textContent = String(new Date().getFullYear());

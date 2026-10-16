@@ -1,11 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Minghui Guo is an MSc student in Artificial Intelligence at NUS and a research intern at Kuaishou and NUS CTIC, with interests in multimodal LLMs, video generation, representation learning, and world models." />
   <title>Minghui Guo</title>
-  <link rel="stylesheet" href="style.css?v=20261013-reskan" />
+  <script>
+    (function () {
+      let theme;
+      try { theme = localStorage.getItem("theme"); } catch (_) {}
+      document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=20261016-portrait-feather" />
 </head>
 <body>
   <header class="site-header">
@@ -19,17 +26,28 @@
         <a href="#internship">Internship</a>
         <a href="#awards">Awards</a>
       </nav>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="true" title="Switch to light mode" hidden>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+        </svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.9 13.2A9 9 0 0 1 10.8 3.1a9 9 0 1 0 10.1 10.1Z" />
+        </svg>
+      </button>
     </div>
   </header>
 
   <main class="wrap" id="home">
     <div class="top fade">
-      <img id="avatar" class="avatar" src="assets/portrait.jpg" alt="Minghui Guo" width="220" height="220" />
+      <div class="avatar-frame">
+        <img id="avatar" class="avatar" src="assets/portrait.jpg" alt="Minghui Guo" width="208" height="252" />
+      </div>
       <div class="intro">
         <h1>Minghui Guo</h1>
         <p class="kicker">
           I am an MSc student in Artificial Intelligence at the National University of Singapore. I am currently a research intern on the Kling Team at Kuaishou Technology, mentored by
-          <a class="mentor-link" href="https://longo11070001.github.io/" target="_blank" rel="noreferrer">Yuanxing Zhang</a>.
+          <a class="mentor-link" href="https://longo11070001.github.io/" target="_blank" rel="noreferrer">Dr. Yuanxing Zhang</a>.
           I am also a research intern at the NUS Center for Trusted Internet and Community (CTIC), receiving day-to-day mentorship from
           <a class="mentor-link" href="https://haofei.vip/" target="_blank" rel="noreferrer">Dr. Hao Fei</a> and
           <a class="mentor-link" href="https://sqwu.top/" target="_blank" rel="noreferrer">Dr. Shengqiong Wu</a>, and faculty supervision from
@@ -75,6 +93,6 @@
     </footer>
   </main>
 
-  <script src="script.js?v=20261013-reskan"></script>
+  <script src="script.js?v=20261016-dark-default"></script>
 </body>
 </html>
